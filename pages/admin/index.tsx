@@ -1,10 +1,18 @@
+import { useQuery } from "@tanstack/react-query";
 import Head from "next/head";
 import Image from "next/image";
 import { VictoryBar, VictoryPie, VictoryChart } from "victory";
+import { BASE_URL } from "../../config";
 
 const Admin = () => {
+  const { isLoading, error, data } = useQuery({
+    queryKey: ["adminData"],
+    queryFn: () => fetch(`${BASE_URL}/admin`).then((res) => res.json()),
+  });
+
+  console.log({isLoading, error, data})
   const colors = ["#d72c4a", "#d75f2c", "#2cd79b", "#3d2cd7"];
-  const data = [
+  const mockdata = [
     { quarter: "a", earnings: 13 },
     { quarter: "b", earnings: 16 },
     { quarter: "c", earnings: 14 },
@@ -35,8 +43,7 @@ const Admin = () => {
             width: "100%",
             display: "flex",
             justifyContent: "space-between",
-          }}
-        >
+          }}>
           {colors.map((i, ind) => (
             <div
               key={ind}
@@ -46,16 +53,14 @@ const Admin = () => {
                 paddingInline: 20,
                 backgroundColor: i,
                 borderRadius: 10,
-              }}
-            >
+              }}>
               <p style={{ fontWeight: 600 }}>TITLE title</p>
               <div
                 style={{
                   display: "flex",
                   justifyContent: "space-between",
                   alignItems: "center",
-                }}
-              >
+                }}>
                 <div
                   style={{
                     height: 60,
@@ -79,20 +84,18 @@ const Admin = () => {
             display: "flex",
             justifyContent: "space-between",
             marginTop: 20,
-          }}
-        >
+          }}>
           <div
             style={{
               backgroundColor: "#822cd7",
               borderRadius: 20,
               paddingInline: 20,
               width: "50%",
-            }}
-          >
+            }}>
             <h1>graph 1</h1>
             <div style={{ width: "60%" }}>
               <VictoryChart domainPadding={20}>
-                <VictoryBar data={data} x="quarter" y="earnings" />
+                <VictoryBar data={mockdata} x="quarter" y="earnings" />
               </VictoryChart>
             </div>
           </div>
@@ -102,8 +105,7 @@ const Admin = () => {
               borderRadius: 10,
               paddingInline: 20,
               width: "45%",
-            }}
-          >
+            }}>
             <h1>graph 2</h1>
             <div style={{ width: "60%" }}>
               <VictoryPie colorScale={colors} data={dataPie} />
@@ -120,8 +122,7 @@ const Admin = () => {
             paddingBottom: 20,
             borderRadius: 20,
             flexDirection: "column",
-          }}
-        >
+          }}>
           {comics.map((i, ind) => (
             <div key={ind}>
               <h2>{i}</h2>
@@ -132,8 +133,7 @@ const Admin = () => {
                     width: "50%",
                     height: 10,
                     marginRight: 20,
-                  }}
-                >
+                  }}>
                   <div
                     style={{
                       height: 10,
