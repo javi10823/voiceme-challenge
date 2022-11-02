@@ -33,7 +33,8 @@ const Admin = () => {
             width: "100%",
             display: "flex",
             justifyContent: "space-between",
-          }}>
+          }}
+        >
           {data.kpis?.map(({ title, value }, ind) => (
             <div
               key={ind}
@@ -43,14 +44,16 @@ const Admin = () => {
                 paddingInline: 20,
                 backgroundColor: colors[ind],
                 borderRadius: 10,
-              }}>
+              }}
+            >
               <p style={{ fontWeight: 600 }}>{title}</p>
               <div
                 style={{
                   display: "flex",
                   justifyContent: "space-between",
                   alignItems: "center",
-                }}>
+                }}
+              >
                 <div
                   style={{
                     height: 60,
@@ -73,14 +76,16 @@ const Admin = () => {
             display: "flex",
             justifyContent: "space-between",
             marginTop: 20,
-          }}>
+          }}
+        >
           <div
             style={{
               backgroundColor: "#822cd7",
               borderRadius: 20,
               paddingInline: 20,
               width: "45%",
-            }}>
+            }}
+          >
             <h1>Earnings</h1>
             <div>
               <VictoryChart domainPadding={20}>
@@ -100,13 +105,22 @@ const Admin = () => {
               borderRadius: 10,
               paddingInline: 20,
               width: "50%",
-            }}>
+            }}
+          >
             <h1>Popular comics</h1>
-            <div>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+              }}
+            >
               <VictoryPie
                 colorScale={colors}
                 data={data.popular}
-                style={{ labels: { fontSize: 16, fill: "#FFF" } }}
+                padding={{ bottom: 100, top: 100, right: 100, left: 100 }}
+                style={{
+                  labels: { fontSize: 14, fill: "#fff" },
+                }}
               />
             </div>
           </div>
@@ -121,11 +135,15 @@ const Admin = () => {
             paddingBottom: 20,
             borderRadius: 20,
             flexDirection: "column",
-          }}>
+          }}
+        >
           <h1>Last comics rating</h1>
           {data.lastComicsRating?.map(({ title, likes, dislikes }, ind) => (
             <div key={ind}>
               <h2>{title}</h2>
+              <h4>
+                Likes {likes} Dislikes: {dislikes}
+              </h4>
               <div style={{ display: "flex", alignItems: "center" }}>
                 <div
                   style={{
@@ -133,7 +151,8 @@ const Admin = () => {
                     width: "100%",
                     height: 10,
                     marginRight: 20,
-                  }}>
+                  }}
+                >
                   <div
                     style={{
                       height: 10,

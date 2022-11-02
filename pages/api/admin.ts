@@ -12,15 +12,15 @@ const mock_data = {
     { title: "Monthly coins spent", value: 246 },
   ],
   popular: [
-    { x: "Cats", y: 35 },
-    { x: "Dogs", y: 40 },
-    { x: "Birds", y: 55 },
+    { x: "CatMan", y: 35 },
+    { x: "MothMan", y: 40 },
+    { x: "BirdPerson", y: 55 },
   ],
   lastComicsRating: [
-    { title: 'Comic 1', likes: 53, dislikes: 23 },
-    { title: 'Comic 2', likes: 34, dislikes: 2 },
-    { title: 'Comic 3', likes: 25, dislikes: 64 },
-  ]
+    { title: "Comic 1", likes: 53, dislikes: 23 },
+    { title: "Comic 2", likes: 34, dislikes: 2 },
+    { title: "Comic 3", likes: 25, dislikes: 64 },
+  ],
 };
 
 export default function getData(req, res) {
